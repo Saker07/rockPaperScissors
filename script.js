@@ -1,13 +1,19 @@
+/*
+Simple game of rock paper scissors, lacks an ui for the moment.
+*/
+
+
+
 //START
 const ROCK=0;
 const PAPER=1;
 const SCISSORS=2;
-const RESULT=[0,1,2]; //lose, win, draw
+//const RESULT=[0,1,2]; //lose, win, draw               ONLY NEEDED FOR PERSONAL CHALLENGE VERSION
 
 
 
 //play
-result=play(userChoice)
+playMatch();
 
 
 
@@ -80,9 +86,38 @@ function userChoice(){
 
 function playMatch(){
     let i;
+    let wins, losses, draws;
+    let winner, loser;
+    wins = 0;
+    losses = 0;
+    draws = 0;
     for(i=0;i<5;i++){
         computer=computerChoice();
         user=userChoice();
+        r=playRound(user, computer);
+        if (r===0) {
+            losses++;
+        }else if(r===1){
+            wins++;
+        }else if(r===2){
+            draws++;
+        }else{
+            alert("ERROR OUTCOME NOT VALID");
+        }
+    }
+    if (losses != wins){
+        winner = wins > losses? "user" : "computer";
+        console.log(`The winner of the match is: ${winner}!
+        The result of the match is:
+            wins:${wins};
+            losses:${losses};
+            draws:${draws};`)
+    }else {
+        console.log(`It's a draw!
+        The result of the match is:
+            wins:${wins};
+            losses:${losses};
+            draws:${draws};`);
     }
 }
 

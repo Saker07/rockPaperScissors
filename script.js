@@ -1,5 +1,6 @@
 /*
 Simple game of rock paper scissors, lacks an ui for the moment.
+Need to validate the user input and retry if it is wrong so you always have 5 overall rounds, otherwise one can simply win once and not input anything 4 times and win.
 */
 
 
@@ -23,7 +24,8 @@ playMatch();
 //FUNCTIONS
 
 function computerChoice(){
-    //gives out random number either 0 1 or 2, 0 is rock 1 is paper 2 is scissors
+    //outputs rock, paper or scissors, randomly
+    //generates a random number either 0 1 or 2, 0 is rock 1 is paper 2 is scissors for this script so we convert it to string at the end
     let random;
     let r;
     //choose random number from 0 to 0.98 so there are 99 possibilities which can cleanly be divided in 3
@@ -85,6 +87,7 @@ function userChoice(){
 }
 
 function playMatch(){
+    //plays 5 matche against the computer, everytime it asks the user for input (through userChoice) and generates a choice for the computer (through computerChoice) keeps count of wins, losses and draws and prints the result.
     let i;
     let wins, losses, draws;
     let winner, loser;

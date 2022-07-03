@@ -5,10 +5,7 @@ const SCISSORS=2;
 const RESULT=[0,1,2]; //lose, win, draw
 
 
-let result, userChoice;
-//take user choice in input
-userChoice=prompt("Rock, paper or scissors?");
-userChoice=userChoice.toLowerCase();
+
 //play
 result=play(userChoice)
 
@@ -73,6 +70,21 @@ function playRound(user, computer){
     return r;
 }
 
+function userChoice(){
+    //asks the user the input through a prompt, correctly capitalizes the input
+    let inp;
+    inp=prompt("Rock, paper or scissors?");
+    inp=inp.toLowerCase();
+    return inp;
+}
+
+function playMatch(){
+    let i;
+    for(i=0;i<5;i++){
+        computer=computerChoice();
+        user=userChoice();
+    }
+}
 
 //fun personal challenge
 /*

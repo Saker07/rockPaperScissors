@@ -11,7 +11,6 @@ userChoice=prompt("Rock, paper or scissors?");
 userChoice=userChoice.toLowerCase();
 //play
 result=play(userChoice)
-    console.log(`Your result is ${result}`)
 
 
 
@@ -27,6 +26,7 @@ function computerChoice(){
     //choose random number from 0 to 0.98 so there are 99 possibilities which can cleanly be divided in 3
     for(random=0.99; random===0.99; random=Math.random()){};
     r=convertToIntChoice(random);
+    r=convertToStringChoice(r); //comment out this part to use the personal challenge version !!!!!
     return r;
 }
 
@@ -56,7 +56,26 @@ function convertToIntChoice(numb){
     return r;
 }
 
+function playRound(user, computer){
+    //input user and computer string choice, outputs result of single round 0->lose 1->win 2->draw
+    let r;
+    switch (user){
+        case "rock":
+            r=computer==="rock"? 2 : computer==="paper"? 0 : 1;
+            break;
+        case "paper":
+            r=computer==="rock"? 1 : computer==="paper"? 2 : 0;
+            break;
+        case "scissors":
+            r=computer==="rock"? 0 : computer==="paper"? 1 : 2;
+            break;
+    }
+    return r;
+}
 
+
+//fun personal challenge
+/*
 function play(user){
     //input the user's string choice, outputs the result 0=lose 1=win 2=draw
     let computer, r;
@@ -78,3 +97,5 @@ function play(user){
 //scissors is the default so it already loses/wins/draws
 
 //another option is just using a bunch of nested conditional statements or switch cases
+
+*/

@@ -14,7 +14,7 @@ const SCISSORS=2;
 
 
 //play
-playMatch();
+
 
 
 

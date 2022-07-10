@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>RPS</title>
 </head>
 <body>
+    <div class="logo"></div>
+    <div class="gameContainer">
+        <div class="roundsCounter"><p>5 rounds left</p></div>
+        <div class="gameWindow">
+            <div class="computerChoice">
+                <img src="img/angryFace.png" alt="an angry face" id="angryFace">
+            </div>
+            <div class="winnerAnnouncer"><p>Are you ready?</p></div>
+        </div>
+        <div class="playerChoice">
+            <div class="rock"><img src="img/rock.png" alt="a stylized rock"></div>
+            <div class="paper"><img src="img/paper.png" alt="a stylized paper"></div>
+            <div class="scissors"><img src="img/scissors.png" alt="a stylized scissors"></div>
+        </div>
+    </div>
+    <div class="scoreContainer">
+        <div class="userContainer">
+            <h4>User</h4>
+            <div class="score">0</div>
+        </div>
+        <div class="computerContainer">
+            <h4>Computer</h4>
+            <div class="score">0</div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

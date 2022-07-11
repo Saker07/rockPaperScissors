@@ -4,17 +4,18 @@ Need to validate the user input and retry if it is wrong so you always have 5 ov
 */
 
 
-
+const RESULT=[0,1,2]; //lose, win, draw               ONLY NEEDED FOR PERSONAL CHALLENGE VERSION
 //START
 const ROCK=0;
 const PAPER=1;
 const SCISSORS=2;
-//const RESULT=[0,1,2]; //lose, win, draw               ONLY NEEDED FOR PERSONAL CHALLENGE VERSION
 
-
-
-//play
-
+let userScore, computerScore;
+let buttons;
+userScore = 0;
+computerScore = 0;
+buttons = document.querySelectorAll(`.rock,.paper,.scissors`)
+buttons.forEach(button => button.addEventListener("click", userChoice))
 
 
 
@@ -29,7 +30,7 @@ function computerChoice(){
     let random;
     let r;
     //choose random number from 0 to 0.98 so there are 99 possibilities which can cleanly be divided in 3
-    for(random=0.99; random===0.99; random=Math.random()){};
+    for(random=0.99; random>=0.99; random=Math.random()){};
     r=convertToIntChoice(random);
     r=convertToStringChoice(r); //comment out this part to use the personal challenge version !!!!!
     return r;
@@ -78,13 +79,30 @@ function playRound(user, computer){
     return r;
 }
 
-function userChoice(){
-    //asks the user the input through a prompt, correctly capitalizes the input
-    let inp;
-    inp=prompt("Rock, paper or scissors?");
-    inp=inp.toLowerCase();
-    return inp;
+function userChoice(ev){
+    let user, computer;
+    let score;
+    let res;
+    user = ev.srcElement.classList.item(0);
+    computer= computerChoice();
+    res=playRound(user, computer);
+    if (res===0){
+        computerScore++;
+        score = document.querySelector(".computerScore");
+        score.textContent = computerScore;
+    }
+    else if (res===1){
+        userScore++;
+        score = document.querySelector(".userScore");
+        score.textContent = userScore;
+    }
+    return;
 }
+
+
+
+
+//not used functions
 
 function playMatch(){
     //plays 5 matche against the computer, everytime it asks the user for input (through userChoice) and generates a choice for the computer (through computerChoice) keeps count of wins, losses and draws and prints the result.
@@ -125,7 +143,7 @@ function playMatch(){
 }
 
 //fun personal challenge
-/*
+
 function play(user){
     //input the user's string choice, outputs the result 0=lose 1=win 2=draw
     let computer, r;
@@ -147,5 +165,3 @@ function play(user){
 //scissors is the default so it already loses/wins/draws
 
 //another option is just using a bunch of nested conditional statements or switch cases
-
-*/

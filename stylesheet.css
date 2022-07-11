@@ -20,7 +20,7 @@ body {
     margin-left: auto;
 }
 
-.roundsCounter p{
+.enemy p{
     font-size: 2rem;
     text-align: center;
     padding: 0.5rem 0;
@@ -101,7 +101,3 @@ body {
 .playerChoice img:active{
     transform: scale(0.9);
 }
-
-
-.clicked{transform: scale(3);
-box-shadow: 2rem 2rem 2rem black;}

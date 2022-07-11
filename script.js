@@ -96,9 +96,31 @@ function userChoice(ev){
         score = document.querySelector(".userScore");
         score.textContent = userScore;
     }
+    displayRoundResult(res);
+    if((userScore === 5) || (computerScore === 5)){
+        resetMatch();
+    }
     return;
 }
 
+function resetMatch(){
+    //if userscore===5 and computerscore ===5 ALERT ERROR WHAT HJAPPENED?
+    //else if userScore ===5 -> remove img from game window, put background green and big text with YOU WON for 2sec?
+    //else if userScore ===5 -> remove img from game window, put background green and big text with YOU LOST for 2sec?
+}
+
+function displayRoundResult(result){
+    //change ".winnerAnnouncer p" to WIN! (res===1) LOSE! (res===0) DRAW! (RES===2) depending on res for 1sec?
+    let announcer;
+    announcer = document.querySelector(".winnerAnnouncer p");
+    if(result===2){
+        announcer.textContent = "DRAW!";
+    } else if(result===1){
+        announcer.textContent = "WIN!";
+    } else if(result===0){
+        announcer.textContent = "LOSE!";
+    }
+}
 
 
 

@@ -80,6 +80,7 @@ function playRound(user, computer){
 }
 
 function userChoice(ev){
+    //take clicked icon from user and plays one round, adds score to the end.
     let user, computer;
     let score;
     let res;
@@ -98,15 +99,44 @@ function userChoice(ev){
     }
     displayRoundResult(res);
     if((userScore === 5) || (computerScore === 5)){
-        resetMatch();
+        finishMatch();
     }
     return;
 }
 
-function resetMatch(){
-    //if userscore===5 and computerscore ===5 ALERT ERROR WHAT HJAPPENED?
+function finishMatch(){
+    //if userscore===5 and computerscore ===5 ALERT ERROR WHAT HAPPENED?
     //else if userScore ===5 -> remove img from game window, put background green and big text with YOU WON for 2sec?
     //else if userScore ===5 -> remove img from game window, put background green and big text with YOU LOST for 2sec?
+    let parent, aiFace;
+    let retry;
+    parent = document.querySelector(".computerChoice");
+    aiFace = document.querySelector(".computerChoice img");
+    parent.removeChild(aiFace);
+    if(userScore===5){
+        parent.innerHTML = `<h3 class="matchAnnouncer">YOU WON<br>THE MATCH!</h3>`;
+    } else if (computerScore===5){
+        parent.innerHTML = `<h3 class="matchAnnouncer">YOU LOST<br>THE MATCH!</h3>`
+    }
+    retry = document.createElement("button");
+    retry.classList.add("tryAgain");
+    retry.textContent = "REMATCH";
+    parent.appendChild(retry);
+    //parent.appendChild(aiFace);
+    retry.addEventListener("click", e => resetMatch(parent, aiFace), {once:true});
+}
+
+function resetMatch(parent, aiFace){
+    userScore = 0;
+    score = document.querySelector(".userScore");
+    score.textContent = userScore;
+
+    computerScore = 0;
+    score = document.querySelector(".computerScore");
+    score.textContent = computerScore;
+
+    parent.innerHTML = ``;
+    parent.appendChild(aiFace);
 }
 
 function displayRoundResult(result){

@@ -20,7 +20,7 @@ body {
     margin-left: auto;
 }
 
-.enemy p{
+.enemy p,.matchAnnouncer {
     font-size: 2rem;
     text-align: center;
     padding: 0.5rem 0;
@@ -39,6 +39,9 @@ body {
     border-style: solid;
     border-width: 0.2rem;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3rem;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
@@ -100,4 +103,12 @@ body {
 }
 .playerChoice img:active{
     transform: scale(0.9);
+}
+
+.matchAnnouncer {
+    font-size: 3rem;
+    text-align: center;
+    color: #c7aaaa;
+    text-shadow: 0.1rem 0.1rem #ab0101;
+    font-weight: 700;
 }

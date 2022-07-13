@@ -87,6 +87,9 @@ function userChoice(ev){
     user = ev.srcElement.classList.item(0);
     computer= computerChoice();
     res=playRound(user, computer);
+    if((userScore === 5) || (computerScore === 5)){
+        return;
+    }
     if (res===0){
         computerScore++;
         score = document.querySelector(".computerScore");
@@ -127,6 +130,8 @@ function finishMatch(){
 }
 
 function resetMatch(parent, aiFace){
+    let announcer;
+    
     userScore = 0;
     score = document.querySelector(".userScore");
     score.textContent = userScore;
@@ -137,6 +142,9 @@ function resetMatch(parent, aiFace){
 
     parent.innerHTML = ``;
     parent.appendChild(aiFace);
+
+    announcer = document.querySelector(".winnerAnnouncer p");
+    announcer.textContent = "Are you ready?";
 }
 
 function displayRoundResult(result){
